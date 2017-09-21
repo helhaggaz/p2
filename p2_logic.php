@@ -32,7 +32,7 @@ if (isset($_GET['tip'])) {
 if ($roundUp) {
   $payment= ceil(($tabAmount + $tabAmount*$tip/100)/$splitWays);
 } else {
-  $payment= ($tabAmount + $tabAmount*$tip/100)/$splitWays;
+  $payment= round(($tabAmount + $tabAmount*$tip/100)/$splitWays,2);
 }
 
 }
