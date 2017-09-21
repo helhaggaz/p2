@@ -1,4 +1,4 @@
-<?php require('p2_Logic.php'); ?>
+<?php require('p2_logic.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
