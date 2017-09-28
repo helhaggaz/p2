@@ -1,38 +1,33 @@
 
 <?php
+require('Form.php');
 require('helpers.php');
-if ($_GET) {
-    #dump($_GET); # Output from logic, only for debugging purposes to see the contents of POST
-}
-# Retrieve data from the form
-if (isset($_GET['splitWays'])) {
-    $splitWays = $_GET['splitWays'];
-} else {
-    $splitWays = '';
-}
-if (isset($_GET['tabAmount'])) {
-    $tabAmount = $_GET['tabAmount'];
-} else {
-    $tabAmount = '';
-}
-if (isset($_GET['roundUp'])) {
-    $roundUp = true;
-} else {
-    $roundUp = false;
-}
-$tip = '';
-$roundUpChecked = '';
-if (isset($_GET['tip'])) {
-    $tip = $_GET['tip'];
-    if ($roundUp) {
-        $roundUpChecked = 'CHECKED';
-    }
-# Calculate the payment
 
-if ($roundUp) {
-  $payment= ceil(($tabAmount + $tabAmount*$tip/100)/$splitWays);
-} else {
-  $payment= round(($tabAmount + $tabAmount*$tip/100)/$splitWays,2);
-}
+use DWA\Form;
+
+$form = new Form($_GET);
+$tipped = false;
+if ($form->isSubmitted()) {
+  # Retrieve data from the form
+  $splitWays = $form->get('splitWays', '');
+  $tabAmount = $form->get('tabAmount', '');
+  $roundUp = $form->get('roundUp', 'off');
+  $tip = $form->get('tip', 0);
+
+  # Validate
+  $errors = $form->validate([
+    'splitWays' => 'required|numeric',
+    'tabAmount' => 'required|numeric'
+  ]);
+  # If there were no validation errors, proceed...
+  if (empty($errors)) {
+    # Calculate the payment
+    if ($roundUp=='on') {
+      $payment= ceil(($tabAmount + $tabAmount*$tip/100)/$splitWays);
+    } else {
+      $payment= round(($tabAmount + $tabAmount*$tip/100)/$splitWays,2);
+    }
+    if ($tip>0) {$tipped = true;}
+  }
 
 }
