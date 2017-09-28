@@ -28,13 +28,13 @@
       <div class='form-group'>
         <label for='splitWays' class='col-sm-2 control-label'>Split how many ways?<br><h6 style='color:red;'>* Required</h6></label>
         <div class='col-sm-10'>
-          <input type='text' class='form-control' name='splitWays' value='<?=$form->prefill('splitWays', '')?>'>
+          <input type='text' class='form-control' name='splitWays' id='splitWays' value='<?=$form->prefill('splitWays', '')?>'>
         </div>
       </div>
       <div class='form-group'>
         <label for='tabAmount' class='col-sm-2 control-label'>How much was the tab?<br><h6 style='color:red;'>* Required</h6></label>
         <div class='col-sm-10'>
-          <input type='text' class='form-control' name='tabAmount' value='<?=$form->prefill('tabAmount', '')?>'>
+          <input type='text' class='form-control' name='tabAmount' id='tabAmount' value='<?=$form->prefill('tabAmount', '')?>'>
         </div>
       </div>
       <div class='form-group'>
@@ -53,7 +53,7 @@
         <div class='col-sm-offset-2 col-sm-10'>
           <div class='checkbox'>
             <label for='roundUp'>
-              <input type='checkbox' name='roundUp' <?php if ($form->isChosen('roundUp')) echo 'CHECKED' ?>>Round up?
+              <input type='checkbox' name='roundUp' id='roundUp' <?php if ($form->isChosen('roundUp')) echo 'CHECKED' ?>>Round up?
             </label>
           </div>
         </div>
