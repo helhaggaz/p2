@@ -26,15 +26,17 @@
 
     <form class='form-horizontal'>
       <div class='form-group'>
-        <label for='splitWays' class='col-sm-2 control-label'>Split how many ways?<br><h6 style='color:red;'>* Required</h6></label>
+        <label for='splitWays' class='col-sm-2 control-label'>Split how many ways?</label>
         <div class='col-sm-10'>
           <input type='text' class='form-control' name='splitWays' id='splitWays' value='<?=$form->prefill('splitWays', '')?>'>
+          <h6 style='color:red;'>* Required</h6>
         </div>
       </div>
       <div class='form-group'>
-        <label for='tabAmount' class='col-sm-2 control-label'>How much was the tab?<br><h6 style='color:red;'>* Required</h6></label>
+        <label for='tabAmount' class='col-sm-2 control-label'>How much was the tab?</label>
         <div class='col-sm-10'>
           <input type='text' class='form-control' name='tabAmount' id='tabAmount' value='<?=$form->prefill('tabAmount', '')?>'>
+          <h6 style='color:red;'>* Required</h6>
         </div>
       </div>
       <div class='form-group'>
